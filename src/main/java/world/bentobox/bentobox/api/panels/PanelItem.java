@@ -132,21 +132,12 @@ public class PanelItem {
             return;
         }
         if (meta != null) {
-            try {
-                meta.setEnchantmentGlintOverride(glow);
-            } catch (NoSuchMethodError e) {
-                // Try the old way
-                if (meta != null) {
-                    if (glow) {
-                        meta.addEnchant(Enchantment.LURE, 0, glow);
-                    } else {
-                        meta.removeEnchant(Enchantment.LURE);
-                    }
-                    icon.setItemMeta(meta);
-                }
+            if (glow) {
+                meta.addEnchant(Enchantment.LURE, 0, glow);
+            } else {
+                meta.removeEnchant(Enchantment.LURE);
             }
             icon.setItemMeta(meta);
-
         }
     }
 

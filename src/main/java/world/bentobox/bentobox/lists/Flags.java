@@ -24,7 +24,6 @@ import world.bentobox.bentobox.listeners.flags.protection.DyeListener;
 import world.bentobox.bentobox.listeners.flags.protection.EggListener;
 import world.bentobox.bentobox.listeners.flags.protection.ElytraListener;
 import world.bentobox.bentobox.listeners.flags.protection.EntityInteractListener;
-import world.bentobox.bentobox.listeners.flags.protection.ExperiencePickupListener;
 import world.bentobox.bentobox.listeners.flags.protection.FireListener;
 import world.bentobox.bentobox.listeners.flags.protection.HurtingListener;
 import world.bentobox.bentobox.listeners.flags.protection.InventoryListener;
@@ -32,7 +31,6 @@ import world.bentobox.bentobox.listeners.flags.protection.ItemDropPickUpListener
 import world.bentobox.bentobox.listeners.flags.protection.LeashListener;
 import world.bentobox.bentobox.listeners.flags.protection.LecternListener;
 import world.bentobox.bentobox.listeners.flags.protection.LockAndBanListener;
-import world.bentobox.bentobox.listeners.flags.protection.PaperExperiencePickupListener;
 import world.bentobox.bentobox.listeners.flags.protection.PhysicalInteractionListener;
 import world.bentobox.bentobox.listeners.flags.protection.PlaceBlocksListener;
 import world.bentobox.bentobox.listeners.flags.protection.PortalListener;
@@ -72,7 +70,6 @@ import world.bentobox.bentobox.listeners.flags.worldsettings.VisitorKeepInventor
 import world.bentobox.bentobox.listeners.flags.worldsettings.VisitorsStartingRaidListener;
 import world.bentobox.bentobox.listeners.flags.worldsettings.WitherListener;
 import world.bentobox.bentobox.managers.RanksManager;
-import world.bentobox.bentobox.util.Util;
 
 /**
  * Contains built-in {@link Flag Flags} that are registered by default into the {@link world.bentobox.bentobox.managers.FlagsManager FlagsManager} at startup.
@@ -307,10 +304,6 @@ public final class Flags {
     // Item pickup or drop
     public static final Flag ITEM_DROP = new Flag.Builder("ITEM_DROP", Material.DIAMOND).defaultRank(RanksManager.VISITOR_RANK).listener(new ItemDropPickUpListener()).mode(Flag.Mode.BASIC).build();
     public static final Flag ITEM_PICKUP = new Flag.Builder("ITEM_PICKUP", Material.SUGAR_CANE).mode(Flag.Mode.BASIC).defaultRank(RanksManager.VISITOR_RANK).build();
-
-    // Experience
-    public static final Flag EXPERIENCE_PICKUP = new Flag.Builder("EXPERIENCE_PICKUP", Material.EXPERIENCE_BOTTLE)
-            .listener(Util.isPaper() ? new PaperExperiencePickupListener() : new ExperiencePickupListener()).mode(Flag.Mode.ADVANCED).defaultRank(RanksManager.VISITOR_RANK).build();
 
     // Command ranks
     public static final Flag COMMAND_RANKS = new Flag.Builder("COMMAND_RANKS", Material.PLAYER_HEAD)

@@ -229,7 +229,11 @@ public class NewIsland {
     private void postCreationTask(Island oldIsland) {
         // Set initial spawn point if one exists
         if (island.getSpawnPoint(Environment.NORMAL) != null) {
-            plugin.getIslands().setHomeLocation(user, island.getSpawnPoint(Environment.NORMAL));
+            if (island != null) {
+                plugin.getIslands().setHomeLocation(island, island.getSpawnPoint(Environment.NORMAL), "");
+            }else {
+                plugin.getIslands().setHomeLocation(user, island.getSpawnPoint(Environment.NORMAL));
+            }
         }
         // Stop the player from falling or moving if they are
         if (user.isOnline()) {
